@@ -4,14 +4,14 @@ Pod::Spec.new do |s|
   s.summary          = 'FFmpeg Kit for Flutter'
   s.description      = 'A Flutter plugin for running FFmpeg and FFprobe commands.'
   s.homepage         = 'https://github.com/arthenica/ffmpeg-kit'
-  s.license          = { :file => '../LICENSE' }
+  s.license          = { :type => 'GPL-3.0', :file => '../LICENSE' }
   s.author           = { 'ARTHENICA' => 'open-source@arthenica.com' }
 
   s.platform            = :ios
   s.requires_arc        = true
   s.static_framework    = true
 
-  s.source              = { :path => '.' }
+  s.source              = { :git => 'https://github.com/Sotatek-HungNguyen14/ffmpeg-kit.git', :tag => '6.0.3' }
   s.source_files        = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
 
@@ -19,7 +19,12 @@ Pod::Spec.new do |s|
 
   s.dependency          'Flutter'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
-
+  ss.prepare_command = <<-CMD
+    if [ ! -d "./Frameworks" ]; then
+      chmod +x ../scripts/setup_ios.sh
+      ../scripts/setup_ios.sh
+    fi
+  CMD
   s.subspec 'min' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
@@ -134,12 +139,6 @@ Pod::Spec.new do |s|
     ss.ios.frameworks = 'AudioToolbox', 'CoreMedia', 'AVFoundation', 'VideoToolbox'
     ss.libraries = 'z', 'bz2', 'c++', 'iconv'
     ss.ios.deployment_target = '12.1'
-    ss.prepare_command = <<-CMD
-      if [ ! -d "./Frameworks" ]; then
-        chmod +x ../scripts/setup_ios.sh
-        ../scripts/setup_ios.sh
-      fi
-    CMD
   end
 
   s.subspec 'full-gpl-lts' do |ss|

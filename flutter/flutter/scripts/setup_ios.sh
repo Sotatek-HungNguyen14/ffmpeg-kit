@@ -8,11 +8,11 @@ unzip -o frameworks.zip -d Frameworks
 rm frameworks.zip
 
 # 移除所有框架中的bitcode
-xcrun bitcode_strip -r Frameworks/ffmpegkit.framework/ffmpegkit -o Frameworks/ffmpegkit.framework/ffmpegkit
-xcrun bitcode_strip -r Frameworks/libavcodec.framework/libavcodec -o Frameworks/libavcodec.framework/libavcodec
-xcrun bitcode_strip -r Frameworks/libavdevice.framework/libavdevice -o Frameworks/libavdevice.framework/libavdevice
-xcrun bitcode_strip -r Frameworks/libavfilter.framework/libavfilter -o Frameworks/libavfilter.framework/libavfilter
-xcrun bitcode_strip -r Frameworks/libavformat.framework/libavformat -o Frameworks/libavformat.framework/libavformat
-xcrun bitcode_strip -r Frameworks/libavutil.framework/libavutil -o Frameworks/libavutil.framework/libavutil
-xcrun bitcode_strip -r Frameworks/libswresample.framework/libswresample -o Frameworks/libswresample.framework/libswresample
-xcrun bitcode_strip -r Frameworks/libswscale.framework/libswscale -o Frameworks/libswscale.framework/libswscale
+xcrun bitcode_strip -r Frameworks/ffmpegkit.xcframework/ffmpegkit -o Frameworks/ffmpegkit.xcframework/ffmpegkit
+xcrun bitcode_strip -r Frameworks/libavcodec.xcframework/libavcodec -o Frameworks/libavcodec.xcframework/libavcodec
+xcrun bitcode_strip -r Frameworks/libavdevice.xcframework/libavdevice -o Frameworks/libavdevice.xcframework/libavdevice
+xcrun bitcode_strip -r Frameworks/libavfilter.xcframework/libavfilter -o Frameworks/libavfilter.xcframework/libavfilter
+xcrun bitcode_strip -r Frameworks/libavformat.xcframework/libavformat -o Frameworks/libavformat.xcframework/libavformat
+xcrun bitcode_strip -r Frameworks/libavutil.xcframework/libavutil -o Frameworks/libavutil.xcframework/libavutil
+xcrun bitcode_strip -r Frameworks/libswresample.xcframework/libswresample -o Frameworks/libswresample.xcframework/libswresample
+xcrun bitcode_strip -r Frameworks/libswscale.xcframework/libswscale -o Frameworks/libswscale.xcframework/libswscale

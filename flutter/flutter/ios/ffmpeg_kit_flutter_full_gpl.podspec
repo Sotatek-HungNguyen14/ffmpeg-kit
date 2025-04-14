@@ -121,14 +121,14 @@ Pod::Spec.new do |s|
   s.subspec 'full-gpl' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
-    ss.ios.vendored_frameworks = 'Frameworks/ffmpegkit.framework',
-                                 'Frameworks/libavcodec.framework',
-                                 'Frameworks/libavdevice.framework',
-                                 'Frameworks/libavfilter.framework',
-                                 'Frameworks/libavformat.framework',
-                                 'Frameworks/libavutil.framework',
-                                 'Frameworks/libswresample.framework',
-                                 'Frameworks/libswscale.framework'
+    ss.ios.vendored_frameworks = 'Frameworks/ffmpegkit.xcframework',
+                                 'Frameworks/libavcodec.xcframework',
+                                 'Frameworks/libavdevice.xcframework',
+                                 'Frameworks/libavfilter.xcframework',
+                                 'Frameworks/libavformat.xcframework',
+                                 'Frameworks/libavutil.xcframework',
+                                 'Frameworks/libswresample.xcframework',
+                                 'Frameworks/libswscale.xcframework'
 
     ss.ios.frameworks = 'AudioToolbox', 'CoreMedia', 'AVFoundation', 'VideoToolbox'
     ss.libraries = 'z', 'bz2', 'c++', 'iconv'

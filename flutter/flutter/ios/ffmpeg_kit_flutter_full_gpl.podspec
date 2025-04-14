@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = '6.0.3'
   s.summary          = 'FFmpeg Kit for Flutter'
   s.description      = 'A Flutter plugin for running FFmpeg and FFprobe commands.'
-  s.homepage         = 'https://github.com/arthenica/ffmpeg-kit'
+  s.homepage         = 'https://github.com/Sotatek-HungNguyen14/ffmpeg-kit'
   s.license          = { :type => 'GPL-3.0', :file => '../LICENSE' }
   s.author           = { 'ARTHENICA' => 'open-source@arthenica.com' }
 
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.static_framework    = true
 
-  s.source              = { :git => 'https://github.com/Sotatek-HungNguyen14/ffmpeg-kit.git', :tag => '6.0.3' }
+  s.source              = { :git => 'https://github.com/Sotatek-HungNguyen14/ffmpeg-kit.git', :tag => 'v6.0' }
   s.source_files        = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
 

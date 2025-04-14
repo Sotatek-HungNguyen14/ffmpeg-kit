@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.static_framework    = true
 
-  s.source              = { :git => 'https://github.com/Sotatek-HungNguyen14/ffmpeg-kit.git', :tag => 'v6.0' }
+  s.source              = { :path => '.' }
   s.source_files        = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
 

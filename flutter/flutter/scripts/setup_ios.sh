@@ -1,18 +1,38 @@
 #!/bin/bash
-
-# iOS 框架下载解压
-IOS_URL="https://github.com/Sotatek-HungNguyen14/ffmpeg-kit/releases/download/v6.0/ffmpeg-kit-full-gpl-6.0-ios-xcframework.zip"
 mkdir -p Frameworks
+
+# Download and extract frameworks
+IOS_URL="https://github.com/Sotatek-HungNguyen14/ffmpeg-kit/releases/download/v6.0/ffmpeg-kit-full-gpl-6.0-ios-xcframework.zip"
 curl -L $IOS_URL -o frameworks.zip
 unzip -o frameworks.zip -d Frameworks
+
+# Move frameworks to correct location and cleanup
+mv Frameworks/ffmpeg-kit-ios-full-gpl/*.xcframework Frameworks/
+rm -rf Frameworks/ffmpeg-kit-ios-full-gpl
+rm -rf Frameworks/__MACOSX
 rm frameworks.zip
 
-# 移除所有框架中的bitcode
-xcrun bitcode_strip -r Frameworks/ffmpegkit.xcframework/ffmpegkit -o Frameworks/ffmpegkit.xcframework/ffmpegkit
-xcrun bitcode_strip -r Frameworks/libavcodec.xcframework/libavcodec -o Frameworks/libavcodec.xcframework/libavcodec
-xcrun bitcode_strip -r Frameworks/libavdevice.xcframework/libavdevice -o Frameworks/libavdevice.xcframework/libavdevice
-xcrun bitcode_strip -r Frameworks/libavfilter.xcframework/libavfilter -o Frameworks/libavfilter.xcframework/libavfilter
-xcrun bitcode_strip -r Frameworks/libavformat.xcframework/libavformat -o Frameworks/libavformat.xcframework/libavformat
-xcrun bitcode_strip -r Frameworks/libavutil.xcframework/libavutil -o Frameworks/libavutil.xcframework/libavutil
-xcrun bitcode_strip -r Frameworks/libswresample.xcframework/libswresample -o Frameworks/libswresample.xcframework/libswresample
-xcrun bitcode_strip -r Frameworks/libswscale.xcframework/libswscale -o Frameworks/libswscale.xcframework/libswscale
+# Remove bitcode from iOS binaries
+FRAMEWORKS=(
+    "ffmpegkit"
+    "libavcodec"
+    "libavdevice"
+    "libavfilter"
+    "libavformat"
+    "libavutil"
+    "libswresample"
+    "libswscale"
+)
+
+for framework in "${FRAMEWORKS[@]}"; do
+    for arch_dir in Frameworks/${framework}.xcframework/ios-*; do
+        if [ -d "$arch_dir" ]; then
+            binary_path="${arch_dir}/${framework}.framework/${framework}"
+            if [ -f "$binary_path" ]; then
+                xcrun bitcode_strip -r "$binary_path" -o "$binary_path"
+            fi
+        fi
+    done
+done
+
+echo "FFmpeg frameworks setup completed"

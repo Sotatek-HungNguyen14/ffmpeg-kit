@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.dependency          'Flutter'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
-  ss.prepare_command = <<-CMD
+  s.prepare_command = <<-CMD
     if [ ! -d "./Frameworks" ]; then
       chmod +x ../scripts/setup_ios.sh
       ../scripts/setup_ios.sh

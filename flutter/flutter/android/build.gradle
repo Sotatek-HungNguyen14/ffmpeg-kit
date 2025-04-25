@@ -57,10 +57,7 @@ android {
     // setupDependencies task adapted for 6.0
     task setupDependencies(type: Exec) {
         workingDir '.'
-        // Ensure the script path is correct relative to the android module directory
-        def scriptPath = file('../scripts/setup_android.sh').absolutePath
-        commandLine 'sh', '-c', scriptPath
-        // Check for a potential AAR name pattern, adjust if needed
+        commandLine 'sh', '-c', '../scripts/setup_android.sh'
         onlyIf { !file('libs/com.arthenica.ffmpegkit-flutter-6.0.aar').exists() }
     }
 }
